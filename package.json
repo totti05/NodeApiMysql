@@ -1,0 +1,26 @@
+{
+  "name": "NodeApiMysql",
+  "version": "1.0.0",
+  "description": "Api con node.js y mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totti05/NodeApiMysql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/totti05/NodeApiMysql/issues"
+  },
+  "homepage": "https://github.com/totti05/NodeApiMysql#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0"
+  }
+}
