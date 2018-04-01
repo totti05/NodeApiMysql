@@ -27,7 +27,7 @@ module.exports = function (app) {
 
 			if(datos)
 			{
-				res.json(200,{
+				res.status(200).json({
 					succes: true,
 					msg: 'usuario insertado',
 					datos: datos
@@ -61,7 +61,7 @@ module.exports = function (app) {
 
 			if(datos)
 			{
-				res.json(200,{datos});
+				res.status(200).json({datos});
 			}else
 			{
 				res.status(500).json({
@@ -79,7 +79,7 @@ module.exports = function (app) {
 		User.deleteUser(req.params.id, (error, datos)=>{
 			if(datos && datos.msg ==='borrado' || datos.msg === 'no existe')
 			{
-				res.json(200,{
+				res.status(200).json({
 					success: true,
 					datos: datos
 
