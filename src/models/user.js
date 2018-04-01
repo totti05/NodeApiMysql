@@ -63,17 +63,52 @@ let userModel = {};
 	 		connection.query(sql,(error, result) => {
 	 			if(error)
 	 			{
-	 				console.log('2 '+sql);
+	 				console.log('error en la sentencia sql que se intenta enviar '+sql);
 	 				throw error;
 
 	 			}else
 	 			{
 	 				callback(null, {
-	 					"msg": "succes"
+	 					msg: "succes"
 
 	 				})
 	 			}
 	 		});
 	 	}
+	 };
+
+	 userModel.deleteUser = (username, callback)=>{
+	 	if(connection){
+	 	let sql = ` 
+			SELECT * FROM usuario WHERE username = ${connection.escape(username)}
+
+	 	`;
+	 	console.log(sql);
+	 	connection.query(sql, (error, row)=> {
+	 		if(row){
+	 			let sql = `
+				DELETE FROM usuario WHERE username= ${connection.escape(username)}
+	 			`;
+	 			console.log('2'+ sql);
+	 			connection.query(sql,(error, result)=>{
+					if (error){
+						throw error;
+
+					}else{
+						callback(null,{
+							msg: "borrado"
+
+						})
+					}
+
+	 			})
+	 		}else
+	 		{
+	 			callback(null, {
+	 				msg: 'no existe'
+	 			})
+	 		} 
+	 	});
+		}
 	 };
 	module.exports = userModel;

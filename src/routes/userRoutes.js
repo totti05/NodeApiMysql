@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports = function (app) {
 	
-	app.get('/', (req, res)=> {
+	app.get('/user', (req, res)=> {
 			User.getUsers((error,data) => {
 
 				res.status(200).json(data);
@@ -74,4 +74,24 @@ module.exports = function (app) {
 
 		});
 });
+
+	app.delete('/user/:id', (req,res)=>{
+		User.deleteUser(req.params.id, (error, datos)=>{
+			if(datos && datos.msg ==='borrado' || datos.msg === 'no existe')
+			{
+				res.json(200,{
+					success: true,
+					datos: datos
+
+				})
+			}else
+			{
+				res.status(500).json({
+					msgs:'error'
+
+				})
+			}
+		});
+
+	});
 }
