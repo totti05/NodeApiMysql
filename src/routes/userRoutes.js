@@ -7,8 +7,8 @@ module.exports = function (app) {
 
 				res.status(200).json(data);
 				
-		});
-})
+			});
+		})
 
 
 	app.post('/user', (req, res) => {
@@ -56,8 +56,8 @@ module.exports = function (app) {
 				creacion: null,
 				actualizacion: null
 			};
-
-		User.updateUser(datoUsuario, (error, datos)=>{
+//validar primero si existe el dato en la tabla y luego mandar
+			User.updateUser(datoUsuario, (error, datos)=>{
 
 			if(datos)
 			{
@@ -72,8 +72,8 @@ module.exports = function (app) {
 
 			}
 
+			});
 		});
-});
 
 	app.delete('/user/:id', (req,res)=>{
 		User.deleteUser(req.params.id, (error, datos)=>{
