@@ -24,4 +24,25 @@ let userModel = {};
 		}
 	};
 
+ 	userModel.insertUser = (datoUsuario, callback) => 
+ 	{
+ 		if(connection)
+ 		{
+ 			connection.query('INSERT INTO usuario SET ?', datoUsuario, (error, result)=> 
+ 			{
+
+ 				if (error)
+ 				{
+ 					throw error;
+ 				}else
+ 				{
+ 					callback(null, result)
+ 				}
+ 			}
+
+ 				)
+ 		}
+
+ 	};
+
 	module.exports = userModel;
