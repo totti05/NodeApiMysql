@@ -17,6 +17,7 @@ module.exports = function (app) {
 		{
 			username: req.body.username,
 			password: req.body.password,
+			nombre: req.body.nombre,
 			email: req.body.email,
 			creacion: null,
 			actualizacion: null
@@ -26,18 +27,51 @@ module.exports = function (app) {
 
 			if(datos)
 			{
-				res.json(200, {
+				res.json(200,{
 					succes: true,
 					msg: 'usuario insertado',
 					datos: datos
-
-
+				})
+			}else
+			{
+				res.status(500).json({
+					succes: false,
+					msg: 'error datos interno del servidor'
 
 				})
+
 			}
 		})
 	});
 
 
+	app.put('/user/:username', (req, res) => {
+			/*optional stuff to do after success */
+			const datoUsuario =
+			{
+				username: req.params.username,
+				password: req.body.password,
+				nombre: req.body.nombre,
+				email: req.body.email,
+				creacion: null,
+				actualizacion: null
+			};
 
-};
+		User.updateUser(datoUsuario, (error, datos)=>{
+
+			if(datos)
+			{
+				res.json(200,{datos});
+			}else
+			{
+				res.status(500).json({
+					succes: false,
+					msg: 'error datos interno del servidor'
+
+				});
+
+			}
+
+		});
+});
+}
