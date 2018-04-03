@@ -4,8 +4,7 @@
   "description": "Api con node.js y mysql",
   "main": "index.js",
   "scripts": {
-    "start":"node src/app.js",
-    
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +20,12 @@
   "homepage": "https://github.com/totti05/NodeApiMysql#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0",
+    "ejs": "^2.5.8",
     "express": "^4.16.3",
+    "jquery": "^1.9.1",
     "morgan": "^1.9.0",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "popper.js": "^1.14.1"
   }
 }

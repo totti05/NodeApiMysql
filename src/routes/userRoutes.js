@@ -2,10 +2,27 @@ const User = require('../models/user');
 
 module.exports = function (app) {
 	
+	app.get('/', (req,res)=>{
+		
+		res.render('usuario/login')
+
+
+	})
 	app.get('/user', (req, res)=> {
 			User.getUsers((error,data) => {
+				if (data)
+				{	
 
-				res.status(200).json(data);
+					res.status(200).json(data);
+				}else
+				{
+					res.status(500).json({
+						succes: false,
+						msg:'error interno del servidor'
+
+					})
+				}
+				
 				
 			});
 		})
@@ -56,7 +73,7 @@ module.exports = function (app) {
 				creacion: null,
 				actualizacion: null
 			};
-//validar primero si existe el dato en la tabla y luego mandar
+			//validar primero si existe el dato en la tabla y luego mandar
 			User.updateUser(datoUsuario, (error, datos)=>{
 
 			if(datos)

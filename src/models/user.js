@@ -10,6 +10,8 @@ connection = mysql.createConnection ({
 
 let userModel = {};
 
+
+
 	userModel.getUsers = (callback) =>{
 
 		if (connection) {
